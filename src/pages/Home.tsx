@@ -46,11 +46,6 @@ const Home = () => {
       ) : (
         <>
           <div className="patient-container">
-            {/* <p>Manage hospital visits</p> */}
-            {/*
-            <div className="patient-container-banner"
-            style={{ backgroundImage: `url(${HomeImage})` }}
-            /> */}
             <p className="patient-container-text">Patients</p>
             <ResponsiveTable
               patients={patients}
