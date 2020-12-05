@@ -1,0 +1,30 @@
+.table{
+    text-align: left;
+}
+.table-row{
+    margin-bottom: 10px;
+    border-bottom: 1px solid lightgray
+}
+.table-text{
+    color: black;
+    font-weight: 100;
+}
+.table-header{
+    color: black;
+    font-weight: 300;
+}
+.table-header-name{
+    color: purple;
+    font-weight: 300;
+}
+.table-text-name{
+    color: purple;
+    font-weight: 100;
+}
+.responsiveTable tbody tr{
+    border: none !important;
+    border-bottom: 1px solid whitesmoke !important;
+}
+thead{
+    border-bottom: 1px solid whitesmoke;
+}

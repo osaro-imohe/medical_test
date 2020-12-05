@@ -1,0 +1,44 @@
+.visit{
+    width: 100%;
+    border-bottom: 1px solid whitesmoke;
+}
+.visit-inner{
+    display: flex;
+    align-items: center;
+}
+.visit-tab-date{
+    width: 25%;
+    height: 100%;
+    display: inline-block;
+}
+.visit-tab-options{
+    width: 70%;
+    padding-right: 10px;
+    display: inline-block;
+}
+.visit-time{
+    color: black;
+    font-weight: 600;
+    font-size: 14px;
+}
+.visit-date{
+    color: #9D9DA9;
+}
+.visit-categories{
+    color: black;
+    font-size: 12px;
+    font-weight: 100;
+    margin-bottom: 0px;
+}
+.visit-diagnosis{
+   font-weight: 100;
+   color: purple;
+}
+.visit-location{
+    color: black;
+    font-weight: 100;
+}
+.visit-arrow-container{
+    width: 5%;
+    display: inline-block;
+}
