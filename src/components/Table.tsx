@@ -58,6 +58,7 @@ const ResponsiveTable = (
       {patients.map((patient: PatientProp) => (
         <Tr
           className="table-row"
+          key={patient.id}
           onClick={() => {
             setSelectedPatientId(patient.id);
             setSelectedName(patient.firstName);
