@@ -23,12 +23,18 @@ const Home = () => {
   const [patients, setPatients] = useState<PatientProps[]>([]);
   const [selectedName, setSelectedName] = useState<string | null>(null);
   const [selectedPatientId, setSelectedPatientId] = useState<string|null>(null);
+  const [error, setError] = useState<boolean>(false);
 
   const fetchData = async () => {
-    const res = await axios.get('https://us-central1-ferrum-dev.cloudfunctions.net/api/v1/patients');
-    setPatients([
-      ...res.data,
-    ]);
+    try {
+      const res = await axios.get('https://us-central1-ferrum-dev.cloudfunctions.net/api/v1/patients');
+      setPatients([
+        ...res.data,
+      ]);
+    } catch (e) {
+      setError(true);
+    }
+
     setLoading(false);
   };
 
@@ -62,6 +68,7 @@ const Home = () => {
                 setShowModal={setShowModal}
               />
             ) : null}
+          {error ? <p className="error-message">Looks like something went wrong, try again.</p> : null}
         </>
       )}
     </div>

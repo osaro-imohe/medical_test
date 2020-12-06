@@ -23,12 +23,17 @@ type DataProps = {
 const Modal = ({ firstName, patientId, setShowModal } : ModalProps) => {
   const [visits, setVisits] = useState<DataProps[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   const loadVisits = async () => {
     setLoading(true);
-    const res = await axios.get(`https://us-central1-ferrum-dev.cloudfunctions.net/api/v1/patients/${patientId}/visits`);
-    setVisits([
-      ...res.data,
-    ]);
+    try {
+      const res = await axios.get(`https://us-central1-ferrum-dev.cloudfunctions.net/api/v1/patients/${patientId}/visits`);
+      setVisits([
+        ...res.data,
+      ]);
+    } catch (e) {
+      setError(true);
+    }
     setLoading(false);
   };
 
@@ -57,6 +62,7 @@ const Modal = ({ firstName, patientId, setShowModal } : ModalProps) => {
             key={visit.id}
           />
         ))}
+      {error ? <p className="error-message">Looks like something went wrong, try again.</p> : null}
     </div>
   );
 };

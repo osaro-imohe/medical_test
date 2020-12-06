@@ -24,6 +24,7 @@ type PhysicianProp = {
 const Visit = ({
   diagnosis, location, physicianId, symptoms, time,
 }: DataProps) => {
+  const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [showPhysician, setShowPhysician] = useState<boolean>(false);
   const [info, setInfo] = useState<PhysicianProp | null>(null);
@@ -31,10 +32,14 @@ const Visit = ({
   const loadPhysicianInfo = async () => {
     if (!info) {
       setLoading(true);
-      const res = await axios.get(`https://us-central1-ferrum-dev.cloudfunctions.net/api/v1/physicians/${physicianId}`);
-      setInfo(res.data);
+      try {
+        const res = await axios.get(`https://us-central1-ferrum-dev.cloudfunctions.net/api/v1/physicians/${physicianId}`);
+        setInfo(res.data);
+        setShowPhysician(true);
+      } catch (e) {
+        setError(true);
+      }
       setLoading(false);
-      setShowPhysician(true);
     }
   };
 
@@ -63,6 +68,7 @@ const Visit = ({
             lastName={info?.lastName}
           />
         ) : null}
+        {error ? <p className="error-message-visit">Looks like something went wrong, try again.</p> : null}
       </div>
     </>
   );

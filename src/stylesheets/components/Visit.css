@@ -42,3 +42,7 @@
     width: 5%;
     display: inline-block;
 }
+.error-message-visit{
+    color: purple;
+    font-weight: 100;
+}
