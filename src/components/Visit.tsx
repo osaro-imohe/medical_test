@@ -30,6 +30,7 @@ const Visit = ({
   const [info, setInfo] = useState<PhysicianProp | null>(null);
 
   const loadPhysicianInfo = async () => {
+    setError(false);
     if (!info) {
       setLoading(true);
       try {
