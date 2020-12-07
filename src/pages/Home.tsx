@@ -27,9 +27,9 @@ const Home = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get('https://us-central1-ferrum-dev.cloudfunctions.net/api/v1/patients');
+      const { data } = await axios.get('https://us-central1-ferrum-dev.cloudfunctions.net/api/v1/patients');
       setPatients([
-        ...res.data,
+        ...data,
       ]);
     } catch (e) {
       setError(true);

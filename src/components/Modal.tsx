@@ -25,11 +25,12 @@ const Modal = ({ firstName, patientId, setShowModal } : ModalProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const loadVisits = async () => {
+    setError(false);
     setLoading(true);
     try {
-      const res = await axios.get(`https://us-central1-ferrum-dev.cloudfunctions.net/api/v1/patients/${patientId}/visits`);
+      const { data } = await axios.get(`https://us-central1-ferrum-dev.cloudfunctions.net/api/v1/patients/${patientId}/visits`);
       setVisits([
-        ...res.data,
+        ...data,
       ]);
     } catch (e) {
       setError(true);

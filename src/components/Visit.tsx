@@ -33,8 +33,8 @@ const Visit = ({
     if (!info) {
       setLoading(true);
       try {
-        const res = await axios.get(`https://us-central1-ferrum-dev.cloudfunctions.net/api/v1/physicians/${physicianId}`);
-        setInfo(res.data);
+        const { data } = await axios.get(`https://us-central1-ferrum-dev.cloudfunctions.net/api/v1/physicians/${physicianId}`);
+        setInfo(data);
         setShowPhysician(true);
       } catch (e) {
         setError(true);
